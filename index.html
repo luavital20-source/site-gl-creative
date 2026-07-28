@@ -190,11 +190,12 @@ header{
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--linha);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.06em;color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+header .wrap{width:min(1300px,95%)}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.06em;color:var(--tinta);white-space:nowrap}
 .brand em{font-style:italic;color:var(--bordo)}
-.nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}
-.nav-links a{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:var(--tinta-suave);transition:color .2s}
+.nav-links{display:flex;align-items:center;gap:1.25rem;list-style:none}
+.nav-links a{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;color:var(--tinta-suave);transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--bordo)}
 .nav-cta{
   background:var(--bordo);border:1px solid var(--bordo);color:var(--ivory)!important;
@@ -203,7 +204,7 @@ header{
 .nav-cta:hover{background:var(--bordo-escuro);border-color:var(--bordo-escuro)}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
 .burger span{display:block;width:24px;height:1.6px;background:var(--tinta);margin:5px 0;transition:all .25s}
-@media(max-width:920px){
+@media(max-width:1140px){
   .burger{display:block}
   .nav-links{
     position:fixed;inset:68px 0 auto 0;
