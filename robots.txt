@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://glcreative.com.br/sitemap.xml

@@ -11,6 +11,13 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+  // LGPD — consentimento padrão NEGADO; só mede quem aceitar no banner
+  gtag('consent', 'default', {
+    ad_storage: 'denied', analytics_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+  });
+  try { if (localStorage.getItem('glc-consent') === 'granted') gtag('consent','update',{ analytics_storage:'granted' }); } catch(e) {}
+
   gtag('config', 'G-VN6770JKFP');
 </script>
 <title>Convite de Casamento Digital Interativo e Lista de Presentes | GL Creative</title>
@@ -18,7 +25,7 @@
 <meta name="robots" content="index, follow">
 
 <!-- ATUALIZE quando tiver o domínio definitivo (ex.: https://glcreative.com.br/) -->
-<!-- <link rel="canonical" href="https://glcreative.com.br/"> -->
+<link rel="canonical" href="https://glcreative.com.br/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Convite de Casamento Digital Interativo | GL Creative">
@@ -1770,6 +1777,57 @@ const CONFIG = {
 
   // --- Ano do rodapé ---
   document.getElementById("ano").textContent = new Date().getFullYear();
+})();
+</script>
+
+<!-- ═══════ Banner de cookies (LGPD) ═══════ -->
+<style>
+#glc-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--papel);
+  border-top:1px solid var(--linha);box-shadow:0 -14px 40px -20px rgba(82,21,33,.30);padding:16px 20px;color:var(--tinta)}
+#glc-cookie .glc-in{max-width:1000px;margin:0 auto;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+#glc-cookie .glc-txt{flex:1;min-width:240px;font-size:13.5px;line-height:1.55;color:var(--tinta-suave)}
+#glc-cookie .glc-txt a{color:var(--bordo);font-weight:600;text-decoration:underline}
+#glc-cookie .glc-acts{display:flex;gap:10px;flex-wrap:wrap}
+#glc-cookie button{font:inherit;font-size:12.5px;font-weight:600;letter-spacing:.02em;padding:11px 18px;
+  border-radius:10px;cursor:pointer;border:1px solid var(--bordo);white-space:nowrap}
+#glc-cookie .glc-b-out{background:transparent;color:var(--bordo)}
+#glc-cookie .glc-b-out:hover{background:rgba(110,30,43,.06)}
+#glc-cookie .glc-b-fill{background:var(--bordo);color:#fff}
+#glc-cookie .glc-b-fill:hover{background:var(--bordo-escuro)}
+#glc-cookie .glc-prefs{flex-basis:100%;margin-top:6px;display:none;border-top:1px solid var(--linha);padding-top:12px}
+#glc-cookie .glc-prefs.on{display:block}
+#glc-cookie .glc-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--tinta-suave)}
+#glc-cookie .glc-row input{width:16px;height:16px;accent-color:var(--bordo)}
+@media(max-width:640px){#glc-cookie .glc-acts{width:100%}#glc-cookie .glc-acts button{flex:1}}
+</style>
+<div id="glc-cookie" role="dialog" aria-label="Aviso de cookies" hidden>
+  <div class="glc-in">
+    <div class="glc-txt">Usamos cookies apenas para entender como as visitas usam o site (Google Analytics) e melhorar sua experiência. Você escolhe. <a href="/politica-de-privacidade">Política de Privacidade</a>.</div>
+    <div class="glc-acts">
+      <button type="button" class="glc-b-out" id="glc-rej">Recusar</button>
+      <button type="button" class="glc-b-out" id="glc-man">Gerenciar</button>
+      <button type="button" class="glc-b-fill" id="glc-acc">Aceitar</button>
+    </div>
+    <div class="glc-prefs" id="glc-prefs">
+      <label class="glc-row"><input type="checkbox" id="glc-an"> Análises de audiência (Google Analytics)</label>
+      <div style="margin-top:10px"><button type="button" class="glc-b-fill" id="glc-save">Salvar escolha</button></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var K='glc-consent', box=document.getElementById('glc-cookie'); if(!box) return;
+  function st(){ try{return localStorage.getItem(K);}catch(e){return null;} }
+  function set(v){ try{localStorage.setItem(K,v);}catch(e){} }
+  function esconde(){ box.hidden=true; } function mostra(){ box.hidden=false; }
+  function aceita(){ if(window.gtag) gtag('consent','update',{analytics_storage:'granted'}); set('granted'); esconde(); }
+  function recusa(){ set('denied'); esconde(); }
+  document.getElementById('glc-acc').onclick=aceita;
+  document.getElementById('glc-rej').onclick=recusa;
+  document.getElementById('glc-man').onclick=function(){ var pr=document.getElementById('glc-prefs'); pr.classList.toggle('on'); document.getElementById('glc-an').checked=(st()==='granted'); };
+  document.getElementById('glc-save').onclick=function(){ document.getElementById('glc-an').checked?aceita():recusa(); };
+  window.glcAbrirCookies=function(){ mostra(); document.getElementById('glc-prefs').classList.add('on'); document.getElementById('glc-an').checked=(st()==='granted'); };
+  if(!st()) mostra();
 })();
 </script>
 </body>
