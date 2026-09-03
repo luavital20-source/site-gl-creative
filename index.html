@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VN6770JKFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VN6770JKFP');
+</script>
 <title>Convite de Casamento Digital Interativo e Lista de Presentes | GL Creative</title>
 <meta name="description" content="Convite de casamento digital interativo: música, contagem, RSVP e lista de presentes com Pix direto na sua conta. Envie pelo WhatsApp. Atendemos todo o Brasil.">
 <meta name="robots" content="index, follow">
@@ -1247,7 +1257,7 @@ const CONFIG = {
     el.setAttribute("target", "_blank");
     el.setAttribute("rel", "noopener");
     // Rastreio de conversão (GA4): descomente quando instalar o gtag
-    // el.addEventListener("click", () => gtag("event", "clique_whatsapp"));
+    el.addEventListener("click", () => gtag("event", "clique_whatsapp"));
   });
 
   // --- Quiz de orçamento -> WhatsApp ---
@@ -1399,7 +1409,7 @@ const CONFIG = {
         resp = {}; passoAtual = "servico"; render();
       });
       // Rastreio de conversão (GA4): descomente quando instalar o gtag
-      // gtag("event", "quiz_resumo");
+      gtag("event", "quiz_resumo");
       return;
     }
 
