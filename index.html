@@ -1257,7 +1257,7 @@ const CONFIG = {
     el.setAttribute("target", "_blank");
     el.setAttribute("rel", "noopener");
     // Rastreio de conversão (GA4): descomente quando instalar o gtag
-    el.addEventListener("click", () => gtag("event", "clique_whatsapp"));
+    el.addEventListener("click", () => { gtag("event", "clique_whatsapp"); gtag("event", "qualify_lead"); });
   });
 
   // --- Quiz de orçamento -> WhatsApp ---
@@ -1410,6 +1410,8 @@ const CONFIG = {
       });
       // Rastreio de conversão (GA4): descomente quando instalar o gtag
       gtag("event", "quiz_resumo");
+      var _btnQuizWhats = corpo.querySelector(".quiz-final a");
+      if (_btnQuizWhats) _btnQuizWhats.addEventListener("click", function(){ gtag("event", "qualify_lead"); });
       return;
     }
 
