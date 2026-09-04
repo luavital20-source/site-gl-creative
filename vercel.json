@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/fortaleza", "destination": "/convite/fortaleza", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
