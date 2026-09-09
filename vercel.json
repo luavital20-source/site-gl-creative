@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/fortaleza", "destination": "/convite/fortaleza", "permanent": true },
-    { "source": "/confirmacao-de-presenca/fortaleza", "destination": "/convite/fortaleza", "permanent": true }
+    { "source": "/confirmacao-de-presenca/fortaleza", "destination": "/convite/fortaleza", "statusCode": 301 }
   ],
   "headers": [
     {
