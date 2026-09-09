@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/fortaleza", "destination": "/convite/fortaleza", "permanent": true }
+    { "source": "/fortaleza", "destination": "/convite/fortaleza", "permanent": true },
+    { "source": "/confirmacao-de-presenca/fortaleza", "destination": "/convite/fortaleza", "permanent": true }
   ],
   "headers": [
     {
